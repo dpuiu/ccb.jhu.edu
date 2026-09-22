@@ -1,0 +1,15 @@
+---
+import Person from "./Person.astro";
+
+interface Props {
+  people: any[];
+}
+
+const { people } = Astro.props;
+---
+
+<div class="people">
+  {people.map((person) => (
+    <Person person={person} />
+  ))}
+</div>

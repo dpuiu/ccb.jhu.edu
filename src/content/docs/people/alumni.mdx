@@ -1,0 +1,9 @@
+---
+title: Alumni
+decription: CCB Alumni
+---
+
+import People from '../../../components/People.astro';
+import people from '../../../data/people.json';
+
+<People people={people.filter(person => person.role === 'alumni')} />

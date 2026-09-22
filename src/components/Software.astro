@@ -1,0 +1,15 @@
+---
+import SoftwareItem from "./SoftwareItem.astro";
+
+interface Props {
+  software: any[];
+}
+
+const { software } = Astro.props;
+---
+
+<div class="software">
+  {software.map((item) => (
+    <SoftwareItem software={item} />
+  ))}
+</div>

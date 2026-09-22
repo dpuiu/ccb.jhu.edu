@@ -1,0 +1,9 @@
+---
+title: Collaborators
+decription: CCB Collaborators
+---
+
+import People from '../../../components/People.astro';
+import people from '../../../data/people.json';
+
+<People people={people.filter(person => person.role === 'collaborators')} />

@@ -1,0 +1,13 @@
+---
+title: Other-tools
+description: Other-tools software
+---
+
+import Software from '../../../components/Software.astro';
+import software from '../../../data/software.json';
+
+<Software
+  software={software.filter((item) =>
+    item.category?.includes('other-tools')
+  )}
+/>

@@ -1,0 +1,54 @@
+---
+import "bootstrap/dist/css/bootstrap.min.css";
+
+interface Props {
+  software: any;
+}
+
+const { software } = Astro.props;
+---
+
+<section class="software-item" id={software.id}>
+
+  <h2>
+    {software.url ? (
+      <a href={software.url}>{software.name}</a>
+    ) : (
+      software.name
+    )}
+  </h2>
+
+  <div class="card p-3">
+
+    {software.description && (
+      <p>{software.description}</p>
+    )}
+
+    {software.category?.length > 0 && (
+      <div>
+        <strong>Categories:</strong>{" "}
+        {software.category.join(", ")}
+      </div>
+    )}
+
+    {software.status && (
+      <div>
+        <strong>Status:</strong>{" "}
+        {software.status}
+      </div>
+    )}
+
+    {software.pmcid && (
+      <div>
+        <strong>Publication:</strong>{" "}
+        <a
+          href={`https://pmc.ncbi.nlm.nih.gov/articles/${software.pmcid}/`}
+        >
+          {software.pmcid}
+        </a>
+      </div>
+    )}
+
+  </div>
+
+</section>

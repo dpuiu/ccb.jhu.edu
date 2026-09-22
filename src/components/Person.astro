@@ -1,0 +1,125 @@
+---
+import "bootstrap/dist/css/bootstrap.min.css";
+import { substitutions } from "../data/substitutions.js";
+
+interface Props {
+  person: any;
+}
+
+const { person } = Astro.props;
+
+function renderLabs(value: string) {
+  const facultyId = value.split(/\s+/)[0];
+
+  const lastName = facultyId.split("-").pop() ?? facultyId;
+  const text = `${lastName.charAt(0).toUpperCase()}${lastName.slice(1)} Lab`;
+
+  return {
+    text,
+    url: `/people/faculty/${facultyId}/`,
+  };
+}
+
+function renderAffiliation(value: string) {
+  // First check substitutions
+  if (substitutions[value]) {
+    return substitutions[value];
+  }
+
+  // Then check for Markdown link: [text](url)
+  const match = value.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+
+  if (match) {
+    return {
+      text: match[1],
+      url: match[2],
+    };
+  }
+
+  // Plain text
+  return {
+    text: value,
+    url: null,
+  };
+}
+---
+
+<section class="person">
+
+  {person.homepage ? (
+    <h2 id={person.id}>
+      <a href={person.homepage}>{person.name}</a>
+    </h2>
+  ) : (
+    <h2 id={person.id}>{person.name}</h2>
+  )}
+
+  <div class="row g-3">
+
+    <div class="col-12 col-md-3">
+      <div class="card">
+        <img
+          src={`/people/${person.id}.webp`}
+          width="240"
+          alt={person.name}
+        />
+      </div>
+    </div>
+
+    <div class="col-12 col-md-9">
+      <div class="card p-3">
+
+        {person.titles?.map((title) => (
+          <div>
+            <strong>{title}</strong>
+          </div>
+        ))}
+
+        {person.labs?.map((lab) => {
+          const item = renderLabs(lab);
+
+          return (
+            <div>
+              <a href={item.url}>{item.text}</a>
+            </div>
+          );
+        })}
+
+        {person.affiliations?.map((affiliation) => {
+          const item = renderAffiliation(affiliation);
+
+          return (
+            <div>
+              {item.url ? (
+                <a href={item.url}>{item.text}</a>
+              ) : (
+                item.text
+              )}
+            </div>
+          );
+        })}
+
+        {person.email && (
+          <div>
+            <a href={`mailto:${person.email}`}>
+              {person.email}
+            </a>
+          </div>
+        )}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+  .person > div {
+    margin-bottom: 0.25rem;
+  }
+
+  .person > div:last-child {
+    margin-bottom: 0;
+  }
+</style>
