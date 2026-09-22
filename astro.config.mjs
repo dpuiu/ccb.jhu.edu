@@ -13,7 +13,7 @@ export default defineConfig({
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/dpuiu/www.ccb.jhu.edu',
+          href: 'https://github.com/dpuiu/ccb.jhu.edu',
         },
       ],
 
