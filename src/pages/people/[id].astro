@@ -1,0 +1,19 @@
+---
+import people from "../../data/people.json";
+import Person from "../../components/Person.astro";
+
+export function getStaticPaths() {
+  return people.map((person) => ({
+    params: {
+      id: person.id,
+    },
+    props: {
+      person,
+    },
+  }));
+}
+
+const { person } = Astro.props;
+---
+
+<Person person={person} />

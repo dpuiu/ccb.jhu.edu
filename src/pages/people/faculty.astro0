@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import People from "../../components/People.astro";
+import people from "../../data/people.json";
+---
+
+<Layout>
+  <People people={people.filter(person => person.role === 'faculty')} />
+</Layout>

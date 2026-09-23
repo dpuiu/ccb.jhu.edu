@@ -5,14 +5,18 @@ description: A joint research center based in the  Whiting School of Engineering
 hero:
   tagline: A joint research center based in the Whiting School of Engineering, with faculty members in the Schools of Engineering, Medicine, Public Health, and Arts & Sciences
   image:
-    file: ../../assets/hero-star.webp
+    file: ../../assets/campus.webp
   actions:
-    - text: JHU
-      link: https://www.jhu.edu
-      icon: right-arrow
     - text: SOM
       link: https://www.hopkinsmedicine.org/som
-      icon: right-arrow
+      icon: external
+    - text: BSPH
+      link: https://publichealth.jhu.edu
+      icon: external
+    - text: WSE
+      link: https://engineering.jhu.edu
+      icon: external
+
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
@@ -24,7 +28,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	<Card title="COMPUTING INFRASTRUCTURE">
             Explore the high-performance computing, large-scale storage, and data resources supporting CCB research!
 	</Card>
-	<Card title="JOIN US" style="background-color: #002d72;">
+	<Card title="JOIN US">
 		Interested in computational biology, genomics, and bioinformatics? Explore opportunities to work with CCB faculty and researchers?
 	</Card>
 </CardGrid>
