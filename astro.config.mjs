@@ -2,13 +2,12 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 export default defineConfig({
-  site: 'https://dpuiu.github.io',
-  base: '/ccb.jhu.edu/',
 
   integrations: [
     starlight({
       title: 'CCB',
 
+      tableOfContents: false,
       social: [
         {
           icon: 'github',
@@ -18,6 +17,10 @@ export default defineConfig({
       ],
 
       sidebar: [
+       {
+          label: 'About',
+          items: [{ autogenerate: { directory: 'about' } }],
+        },
         {
           label: 'People',
           items: [{ autogenerate: { directory: 'people' } }],

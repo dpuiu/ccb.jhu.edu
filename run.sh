@@ -52,3 +52,5 @@ sed 's/alignment/metagenomics/g; s/Alignment/Metagenomics/g' src/content/docs/so
 sed 's/alignment/other-tools/g; s/Alignment/Other-tools/g' src/content/docs/software/alignment.mdx   >  src/content/docs/software/other-tools.mdx
 sed 's/alignment/transcriptome-assembly/g; s/Alignment/Transcriptome-assembly/g' src/content/docs/software/alignment.mdx   >  src/content/docs/software/transcriptome-assembly.mdx
 sed 's/alignment/variant-analysis/g; s/Alignment/Variant-analysis/g' src/content/docs/software/alignment.mdx   >  src/content/docs/software/variant-analysis.mdx
+
+nano src/pages/people/\[id\].astro 
